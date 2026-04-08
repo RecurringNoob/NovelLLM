@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   # ──────────────────────────────────────────────
   # PostgreSQL 16 + pgvector
@@ -18,7 +16,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-notelm} -d ${POSTGRES_DB:-notelm}"]
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-notelm} -d ${POSTGRES_DB:-notelm}" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -38,7 +36,7 @@ services:
       - redis_data:/data
     command: redis-server --appendonly yes --loglevel warning
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: [ "CMD", "redis-cli", "ping" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -70,7 +68,6 @@ services:
     networks:
       - notelm_net
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-
   # ──────────────────────────────────────────────
   # Hocuspocus (Real-time Collaboration)
   # NOTE: Uncomment in Phase 6 when Hocuspocus service is implemented
@@ -96,6 +93,7 @@ services:
 volumes:
   postgres_data:
   redis_data:
+
 
 networks:
   notelm_net:

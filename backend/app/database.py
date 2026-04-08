@@ -22,6 +22,11 @@ engine = create_async_engine(
     pool_size=10,
     max_overflow=20,
     pool_pre_ping=True,
+    # Required for Neon serverless / pooler connections (PgBouncer)
+    connect_args={
+        "prepared_statement_cache_size": 0,
+        "server_settings": {"application_name": "notelm"},
+    },
 )
 
 # ── Session factory ───────────────────────────────────────────────

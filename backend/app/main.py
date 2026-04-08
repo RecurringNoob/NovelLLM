@@ -30,7 +30,7 @@ from app.routers.chapters import router as chapters_router
 from app.routers.characters import router as characters_router
 from app.routers.plot_threads import router as plot_threads_router
 from app.routers.bible import router as bible_router
-from app.routers.generation import router as generation_router, jobs_router
+from app.routers.generation import router as generation_router, jobs_router, beats_router
 from app.routers.dialogue import router as dialogue_router
 from app.routers.search import router as search_router
 from app.routers.exports import router as exports_router
@@ -76,7 +76,7 @@ app = FastAPI(
         "and consistency. Supports mature content pipelines, CRDTs, and a "
         "7-stage generation pipeline."
     ),
-    version="0.1.0-phase1",
+    version="0.2.0-phase2",
     docs_url="/docs",
     redoc_url="/redoc",
     lifespan=lifespan,
@@ -156,6 +156,7 @@ app.include_router(characters_router,   prefix=PREFIX)
 app.include_router(plot_threads_router, prefix=PREFIX)
 app.include_router(bible_router,        prefix=PREFIX)
 app.include_router(generation_router,   prefix=PREFIX)
+app.include_router(beats_router,        prefix=PREFIX)
 app.include_router(jobs_router,         prefix=PREFIX)
 app.include_router(dialogue_router,     prefix=PREFIX)
 app.include_router(search_router,       prefix=PREFIX)

@@ -18,6 +18,7 @@ from app.models.bible import (  # noqa: F401
     PromptTemplate,
     PromptTemplateActivation,
 )
+from app.models.job import GenerationJob  # noqa: F401  ← Phase 2
 from app.models.dialogue import DialogueSession  # noqa: F401
 from app.models.style import StyleProfile  # noqa: F401
 from app.models.analytics import ChapterAnalytics  # noqa: F401
@@ -41,6 +42,7 @@ __all__ = [
     "GenerationLog",
     "PromptTemplate",
     "PromptTemplateActivation",
+    "GenerationJob",
     "DialogueSession",
     "StyleProfile",
     "ChapterAnalytics",
