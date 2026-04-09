@@ -171,3 +171,8 @@ curl http://localhost:8000/health
 | **7** | Dialogue, Style & Templates: Dialogue engine, style profiles, bootstrapping, series | ⏳ |
 | **8** | Search, Exports & Quality: pgvector search, Shunn/EPUB3, Stage 6, NER guard, cost gauge | ⏳ |
 | **9** | Observability, A/B & Launch: OTEL, Prometheus, Loki, A/B, CI eval gate, real auth | ⏳ |
+
+#Test
+docker compose exec api pytest tests/ -v
+# Or just unit tests (no DB required):
+docker compose exec api pytest tests/test_bible_service.py tests/test_routers.py -v
